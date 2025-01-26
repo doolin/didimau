@@ -22,4 +22,16 @@ describe Sheets::Authorization do
       expect(actual.first).to be_a(String)
     end
   end
+
+  describe '#get_spreadsheet_data' do
+    it 'returns a list of sheet names' do
+      actual = authorization.get_spreadsheet_data(ENV["DEMO_SPREADSHEET_ID"], "Board", ENV["GOOGLE_APPLICATION_CREDENTIALS"])
+
+      puts "actual: #{actual}"
+
+      expect(actual).to be_a(Array)
+      expect(actual.length).to be > 0
+      expect(actual.first).to be_a(Array)
+    end
+  end
 end

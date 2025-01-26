@@ -56,6 +56,24 @@ module Sheets
       sheet_names
     end
 
+    def get_spreadsheet_data(spreadsheet_id, sheet_name, credentials_path)
+      service = Google::Apis::SheetsV4::SheetsService.new
+      service.client_options.application_name = "Google Sheets API Ruby Quickstart"
+
+      # Authorize with credentials.json
+      scopes = [ Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY ]
+      authorizer = Google::Auth::ServiceAccountCredentials.make_creds(
+        json_key_io: File.open(credentials_path),
+        scope: scopes
+      )
+
+      service.authorization = authorizer
+
+      # Get spreadsheet data
+      response = service.get_spreadsheet_values(spreadsheet_id, sheet_name)
+      response.values
+    end
+
     # Now use the connection to make a request to the Google Sheets API.
     # For example, to get the list of spreadsheets.
     def get_spreadsheets
