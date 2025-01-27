@@ -1,5 +1,6 @@
 
 require "google/apis/sheets_v4"
+require "google/apis/drive_v3"
 require "googleauth"
 require "googleauth/stores/file_token_store"
 
@@ -72,6 +73,24 @@ module Sheets
       # Get spreadsheet data
       response = service.get_spreadsheet_values(spreadsheet_id, sheet_name)
       response.values
+    end
+
+    def download_spreadsheet_csv(spreadsheet_id, credentials_path, destination_path)
+      drive_service = Google::Apis::DriveV3::DriveService.new
+      drive_service.client_options.application_name = "Google Drive API Ruby Quickstart"
+
+      # Authorize with credentials.json
+      scopes = [ Google::Apis::DriveV3::AUTH_DRIVE_FILE ]
+      authorizer = Google::Auth::ServiceAccountCredentials.make_creds(
+        json_key_io: File.open(credentials_path),
+        scope: scopes
+      )
+
+      drive_service.authorization = authorizer
+
+      # Download the file
+      file = drive_service.get_file(spreadsheet_id, download_dest: destination_path)
+      file
     end
 
     # Now use the connection to make a request to the Google Sheets API.

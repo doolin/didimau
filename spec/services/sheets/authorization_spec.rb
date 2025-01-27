@@ -34,4 +34,11 @@ describe Sheets::Authorization do
       expect(actual.first).to be_a(Array)
     end
   end
+
+  # describe '#download_spreadsheet_csv' do
+  #   it 'returns a csv' do
+  #     actual = authorization.download_spreadsheet_csv(ENV["DEMO_SPREADSHEET_ID"], ENV["GOOGLE_APPLICATION_CREDENTIALS"], "board.csv")
+  #     expect(actual).to be_a(String)
+  #   end
+  # end
 end
