@@ -29,7 +29,7 @@ module Sheets
     #
 
     # We want to initial using the credentials from the .env file.
-    # Note: theee is not "client_secrent" key, and the credentials can be passed as-is.
+    # Note: theee is not "client_secret" key, and the credentials can be passed as-is.
     def initialize
     end
 
