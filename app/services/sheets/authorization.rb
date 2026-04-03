@@ -4,8 +4,8 @@ require "googleauth"
 
 module Sheets
   class Authorization
-    SCOPES_SHEETS = [Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY].freeze
-    SCOPES_DRIVE = [Google::Apis::DriveV3::AUTH_DRIVE_FILE].freeze
+    SCOPES_SHEETS = [ Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY ].freeze
+    SCOPES_DRIVE = [ Google::Apis::DriveV3::AUTH_DRIVE_FILE ].freeze
 
     def initialize(credentials_path: nil)
       @credentials_path = credentials_path || Rails.root.join(ENV.fetch("GOOGLE_APPLICATION_CREDENTIALS"))

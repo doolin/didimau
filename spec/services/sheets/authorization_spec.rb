@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Sheets::Authorization do
+describe Sheets::Authorization, if: ENV["GOOGLE_APPLICATION_CREDENTIALS"].present? do
   let(:spreadsheet_id) { ENV["DEMO_SPREADSHEET_ID"] }
   let(:sheet_name) { "Board" }
   let(:credentials_path) { ENV["GOOGLE_APPLICATION_CREDENTIALS"] }
