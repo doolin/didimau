@@ -22,7 +22,9 @@ gem "jbuilder"
 # Sittepress is under active development by an SF Rubyist.
 gem "sitepress-rails"
 gem "dotenv-rails"
-gem "google-api-client"
+gem "google-apis-sheets_v4"
+gem "google-apis-drive_v3"
+gem "googleauth"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
